@@ -1,0 +1,99 @@
+﻿@model MediCure.Models.LoginModel
+@{
+    ViewBag.Title = "MediCure Member";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<!--Beginning of Right Drawer Layout-->
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+        <div class="custom-menu">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            </button>
+        </div>
+        <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+            <div class="user-logo">
+                <div class="img" style="background-image: url(images/logo.jpg);"></div>
+                <h3>@ViewBag.LoggedUserName</h3>
+            </div>
+        </div>
+        <ul class="list-unstyled components mb-5">
+            <li class="active">
+                <a href="@Url.Action("Index")"><span class="fa fa-home mr-3"></span> Home</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ViewUserData")"><span class="	fa fa-users mr-3"></span> Manage Users</a>
+            </li>
+            <li>
+                <a href="@Url.Action("MessageBox")"><span class="fa fa-comments mr-3"></span> Message Box</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ChangeUserPassword")"><span class="fa fa-cogs mr-3"></span> Change Password</a>
+            </li>
+            <li>
+                <a href="@Url.Action("UserLogout")"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5 pt-5">
+        <h1>Welcome to MediCare+</h1>
+        <h4>Logged in as Admin</h4>
+
+        <!--BODY START-->
+        <h2>Create User</h2>
+
+        @using (Html.BeginForm("InsertUserData", "MediCureMember",FormMethod.Post))
+        {
+            @Html.HiddenFor(a => a.LoginID)
+
+            <div class="form-group">
+                <label>Name : </label>
+                @Html.TextBoxFor(a => a.UserName, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Contact Number : </label>
+                @Html.TextBoxFor(a => a.Contact, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Gender : </label>
+                Male : @Html.RadioButtonFor(a => a.Gender, "Male", new { name = "Gender" })
+                Female : @Html.RadioButtonFor(a => a.Gender, "Female", new { name = "Gender" })
+            </div>
+
+            <div class="form-group">
+                <label>Email ID : </label>
+                @Html.TextBoxFor(a => a.EmailID, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Address : </label>
+                @Html.TextBoxFor(a => a.Address, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Profile : </label>
+                @Html.DropDownListFor(a => a.RoleID, Model.lstrolenames, "Select", new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Password : </label>
+                @Html.TextBoxFor(a => a.Password, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-dark" />
+            </div>
+        }
+
+        <!--BODY END-->
+
+
+    </div>
+    <!---->
+</div>
+<!--End of Right Drawer Layout-->

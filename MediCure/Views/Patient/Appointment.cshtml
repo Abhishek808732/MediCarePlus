@@ -1,0 +1,104 @@
+﻿@model MediCure.Models.AppointmentModel
+@{
+    ViewBag.Title = "Appointment";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<!--Beginning of Right Drawer Layout-->
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+        <div class="custom-menu">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            </button>
+        </div>
+        <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+            <div class="user-logo">
+                <div class="img" style="background-image: url(images/logo.jpg);"></div>
+                <h3>@ViewBag.LoggedUserName</h3>
+            </div>
+        </div>
+        <ul class="list-unstyled components mb-5">
+            <li>
+                <a href="@Url.Action("Index")"><span class="fa fa-home mr-3"></span> Home</a>
+            </li>
+            <li>
+                <a href="@Url.Action("History")"><span class="fa fa-home mr-3"></span> Your History</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Appointment")"><span class="fa fa-home mr-3"></span> Appointment</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ViewProfile")"><span class="fa fa-home mr-3"></span> View Profile</a>
+            </li>
+            <li>
+                <a href="@Url.Action("MessageBox")"><span class="fa fa-comments mr-3"></span> Message Box</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ChangeUserPassword")"><span class="fa fa-cogs mr-3"></span> Change Password</a>
+            </li>
+            <li>
+                <a href="@Url.Action("UserLogout")"><span class="fa fa-sign-out mr-3"></span>Sign Out</a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5 pt-5">
+
+        @using (Html.BeginForm("InsertAppointment", "Patient", FormMethod.Post))
+        {
+            <div>
+                <h2>Make an appointment</h2>
+            </div>
+        @Html.HiddenFor(model => model.LoginID, new { id = "loginid" })
+        @Html.HiddenFor(model => model.UserName, new { id = "name" })
+    <div class="wow fadeInUp" data-wow-delay="0.8s">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <label>First Name</label>
+                <input type="text" class="form-control" value=@Html.DisplayFor(model => model.UserName)
+                       readonly>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <label for="telephone">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <label for="select"><br />Select Doctor</label>
+                @Html.DropDownListFor(a => a.DoctorName, Model.lstDoc, "Select", new { @class = "form-control" })
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <label for="date"><br />Select Date</label>
+                <!--input type="date" name="StartDate" value="" id="date" class="form-control"-->
+                @Html.TextBoxFor(model => model.date, new { @class = "form-control", type = "date" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <label>Select Preferred Slot</label> <br />
+                9AM-11AM: @Html.RadioButtonFor(a => a.PreferredSlot, "9AM-11AM", new { name = "PreferredSlot" })<br />
+                12PM-2PM: @Html.RadioButtonFor(a => a.PreferredSlot, "12PM-2PM", new { name = "PreferredSlot" })<br />
+                3PM-5PM: @Html.RadioButtonFor(a => a.PreferredSlot, "3PM-5PM", new { name = "PreferredSlot" })<br />
+                Other: @Html.RadioButtonFor(a => a.PreferredSlot, "Other", new { name = "PreferredSlot" })
+            </div>
+        </div>
+        <div class="col-md-16 col-sm-12" style="width:500px">
+            <label for="Message"><br />Additional Message</label>
+            <textarea class="form-control" rows="5" id="message" name="message" placeholder="Message"></textarea><br />
+            @*<input type="button" class="form-control" style="background-color:green;color:white" id="cf-submit" name="submit" value="Submit Button" />*@
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-dark" />
+        </div>
+    </div>
+        }
+
+
+    </div>
+    <!--Page Content End-->
+</div>
+<!--End of Right Drawer Layout-->

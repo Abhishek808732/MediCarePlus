@@ -1,0 +1,38 @@
+﻿@model  IList<MediCure.Models.medmodel>
+@{
+    ViewBag.Title = "Medi-Directory";
+}
+
+
+<!-- Medicine Directory --><div class="container" align:center>
+    <br /><h2 style="text-align:center" > Medicine Directory</h2><br />
+</div>
+<br />
+
+<div class="container">
+    <table class="table table-bordered table-hover">
+        <thead class="table-info">
+            <tr>
+                <th style="min-width: 180px;">Medicine Name</th>
+                <th style="min-width: 180px;">Manufactured By</th>
+                <th style="min-width: 180px;">Usage</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.DrugName</td>
+                        <td>@item.Manufacturer</td>
+                        <td>@item.UsedFor</td>
+                        <td>@item.Description</td>
+                    </tr>
+                }
+            }
+    </table>
+</div>
+
+<!-- End of Medicine Directory -->
+

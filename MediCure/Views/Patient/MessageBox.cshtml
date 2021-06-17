@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "MessageBox";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<!--Beginning of Right Drawer Layout-->
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+        <div class="custom-menu">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            </button>
+        </div>
+        <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+            <div class="user-logo">
+                <div class="img" style="background-image: url(images/logo.jpg);"></div>
+                <h3>@ViewBag.LoggedUserName</h3>
+            </div>
+        </div>
+        <ul class="list-unstyled components mb-5">
+            <li>
+                <a href="@Url.Action("Index")"><span class="fa fa-home mr-3"></span> Home</a>
+            </li>
+            <li>
+                <a href="@Url.Action("History")"><span class="fa fa-home mr-3"></span> Your History</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Appointment")"><span class="fa fa-home mr-3"></span> Appointment</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ViewProfile")"><span class="fa fa-home mr-3"></span> View Profile</a>
+            </li>
+            <li>
+                <a href="@Url.Action("MessageBox")"><span class="fa fa-comments mr-3"></span> Message Box</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ChangeUserPassword")"><span class="fa fa-cogs mr-3"></span> Change Password</a>
+            </li>
+            <li>
+                <a href="@Url.Action("UserLogout")"><span class="fa fa-sign-out mr-3"></span>Sign Out</a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5 pt-5">
+
+
+    </div>
+    <!---->
+</div>
+<!--End of Right Drawer Layout-->

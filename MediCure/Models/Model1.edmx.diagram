@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="57408e17fc31469a8851fd82b1e925c8" Name="Diagram1">
+        <EntityTypeShape EntityType="MediCureModel.Drug_Table" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="MediCureModel.MedicineDirectory" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="MediCureModel.Order_Table" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="MediCureModel.Record" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="MediCureModel.RoleDetail" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="MediCureModel.UserLogin" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="MediCureModel.FK_Order_Table_Drug_Table" />
+        <AssociationConnector Association="MediCureModel.FK_UserLogin_RoleDetails" />
+        <EntityTypeShape EntityType="MediCureModel.Appointment" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

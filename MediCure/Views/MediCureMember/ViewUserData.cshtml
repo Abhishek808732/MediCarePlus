@@ -1,0 +1,99 @@
+﻿@model IList<MediCure.Models.LoginModel>
+@{
+    ViewBag.Title = "ViewUserData";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<!--Beginning of Right Drawer Layout-->
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+        <div class="custom-menu">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            </button>
+        </div>
+        <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+            <div class="user-logo">
+                <div class="img" style="background-image: url(images/logo.jpg);"></div>
+                <h3>@ViewBag.LoggedUserName</h3>
+            </div>
+        </div>
+        <ul class="list-unstyled components mb-5">
+            <li class="active">
+                <a href="@Url.Action("Index")"><span class="fa fa-home mr-3"></span> Home</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ViewUserData")"><span class="	fa fa-users mr-3"></span> Manage Users</a>
+            </li>
+            <li>
+                <a href="@Url.Action("MessageBox")"><span class="fa fa-comments mr-3"></span> Message Box</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ChangeUserPassword")"><span class="fa fa-cogs mr-3"></span> Change Password</a>
+            </li>
+            <li>
+                <a href="@Url.Action("UserLogout")"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5 pt-5">
+
+
+        <!--BODY-->
+        <h2> Manage User</h2>
+        @using (Html.BeginForm("SearchUserData", "MediCureMember", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label>Enter Name : </label>
+                <input type="text" name="searchuser" />
+                <input type="submit" value="Search" class="btn btn-dark" />
+            </div>
+
+            <div>
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Contact Number</th>
+                        <th>Gender</th>
+                        <th>Email ID</th>
+                        <th>Profile</th>
+                        <th>Address</th>
+                        <th>Modify Data</th>
+                        <th>Delete User</th>
+                    </tr>
+
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.LoginID</td>
+                                <td>@item.UserName</td>
+                                <td>@item.Contact</td>
+                                <td>@item.Gender</td>
+                                <td>@item.EmailID</td>
+                                <td>@item.RoleName</td>
+                                <td>@item.Address</td>
+                                <td>
+                                    <a href="@Url.Action("EditUserData", "MediCureMember", new { id = item.LoginID })">Update</a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("DeleteUserData","MediCureMember",new { id=item.LoginID})" onclick="return confirm('Are you sure you want to delete the record?')">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+            </div>
+        }
+        <!--BODY END-->
+
+
+    </div>
+    <!---->
+</div>
+<!--End of Right Drawer Layout-->
